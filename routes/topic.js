@@ -5,15 +5,18 @@ var fs = require('fs');
 var sanitizeHtml = require('sanitize-html');
 var template = require('../lib/template.js');
 
+var text = "";
+var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+for (var i = 0; i < 5; i++)
+  text += possible.charAt(Math.floor(Math.random() * possible.length));
+
 router.get('/create', function(request, response){
-    var title = 'WEB - create';
+    var title = 'create';
     var list = template.list(request.list);
     var html = template.HTML(title, list, `
       <form action="/topic/create_process" method="post">
-        <p><input type="text" name="title" placeholder="title"></p>
-        <p>
-          <textarea name="description" placeholder="description"></textarea>
-        </p>
+        <p><input name="text" value=${text}></p>
         <p>
           <input type="submit">
         </p>
@@ -24,8 +27,8 @@ router.get('/create', function(request, response){
    
   router.post('/create_process', function(request, response){
     var post = request.body;
-    var title = post.title;
-    var description = post.description;
+    var title = post.text;
+    var description = ' ';
     fs.writeFile(`data/${title}`, description, 'utf8', function(err){
       response.redirect(`/topic/${title}`);
     });
@@ -58,7 +61,7 @@ router.get('/create', function(request, response){
   router.post('/update_process', function(request, response){
     var post = request.body;
     var id = post.id;
-    var title = post.title;
+    var title = post.text;
     var description = post.description;
     fs.rename(`data/${id}`, `data/${title}`, function(error){
       fs.writeFile(`data/${title}`, description, 'utf8', function(err){
