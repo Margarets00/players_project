@@ -12,12 +12,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/web-n/Nodejs.git"
+    "url": "git+https://github.com/Margarets00/players_project.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/web-n/Nodejs/issues"
+    "url": "https://github.com/Margarets00/players_project.git"
   },
   "homepage": "https://github.com/web-n/Nodejs#readme",
   "dependencies": {
