@@ -8,7 +8,7 @@ var topicRouter = require('./routes/topic');
 var port = process.env.PORT || 8080;
  
 //json 형식은 따로 있음
-app.use(express.static('public'));
+app.use(express.static(__dirname +'/public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(compression());
 app.get('*', function(request, response, next){
