@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 var compression = require('compression');
 var indexRouter = require('./routes/index');
 var topicRouter = require('./routes/topic');
-
+var port = process.env.PORT || 8080;
  
 //json 형식은 따로 있음
 app.use(express.static('public'));
@@ -30,6 +30,6 @@ app.use(function (err, req, res, next) {
   res.status(500).send('Something broke!')
 });
  
-app.listen(3000, function() {
+app.listen(port, function() {
   console.log('Example app listening on port 3000!')
 });
