@@ -1,30 +1,14 @@
 {
-<<<<<<< HEAD
   "name": "playus-music",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
   },
-=======
-  "name": "Player-music",
-  "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
-  "directories": {
-    "lib": "lib"
-  },
-  "scripts": {
-    "start": "node main.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Margarets00/players_project.git"
+    "url": "git+https://github.com/Margarets00/playus_project.git"
   },
-  "author": "",
-  "license": "ISC",
->>>>>>> c069e9afa4a9b4b1dd4f752c28dc56be826d0161
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
