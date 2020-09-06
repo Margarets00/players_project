@@ -1,20 +1,24 @@
 var express = require('express');
 var router = express.Router();
-var template = require('../lib/template.js');
 
-router.get('/', function(request, response) { 
-    var title = 'Players';
-    var description = 'Please Write Code';
-    var list = template.list(request.list);
-    var html = template.HTML(title, list,
-      `
-      <h2>${title}</h2>
-      ${description}
-      <p><input type="text" name="code"></p>
-      <p><input type="submit"></p>
-      `,
-      `<a href="/topic/create">create</a>`
-    ); 
-    response.send(html);
-  });
-  module.exports = router;
+/* GET home page. */
+router.get('/', function(req, res, next) {
+
+  /*
+  function listCode() {
+    var i = 1;
+    var code = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    
+    for (var i = 0; i < 5; i++)
+        code += possible.charAt(Math.floor(Math.random() * possible.length));
+    code = "<li id = code" + i + ">" + code + "</li>"
+    i++;
+    console.log(code);
+    $("code_list").append(code);
+  }
+*/
+  res.render('index.html');
+});
+
+module.exports = router;
