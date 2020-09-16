@@ -39,11 +39,11 @@ router.get(['/main', '/main/:id'], function(req, res) {
           console.log(err);
           res.status(500);
         }
-        res.render('./views/index.ejs', {code_list:files, title:main_title});
+        res.render('index.ejs', {code_list:files, title:main_title});
       })
     }
     else {
-      res.render('./views/index.ejs', {code_list:files, title:main_title});
+      res.render('index.ejs', {code_list:files, title:main_title});
     }
   })
 })
