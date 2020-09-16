@@ -15,18 +15,18 @@ function makeCode() {
   return code;
 }
 
-router.post('/main/make', function(req, res, next) {
+router.post('/make', function(req, res, next) {
   var code = makeCode();
   fs.writeFile('./data/' + code,' ', function(err) {
       if (err) {
         console.log(err);
         res.status(500).send('F-Error');
       }
-      res.redirect('/main/' + code);
+      res.redirect('/' + code);
   });
 });
 
-router.get(['/main', '/main/:id'], function(req, res) {
+router.get(['/', '/:id'], function(req, res) {
   const id = req.params.id;
   fs.readdir('./data', function(err, files) {
     if (err) {
@@ -48,7 +48,7 @@ router.get(['/main', '/main/:id'], function(req, res) {
   })
 })
 
-router.get('/main/search/:id', function(req, res) {
+router.get('/search/:id', function(req, res) {
   const findCode = req.params.id;
   fs.stat('./data/' + findCode, function (err, stat) {
     if (err == null) {
