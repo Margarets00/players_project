@@ -22,7 +22,7 @@ router.post('/make', function(req, res, next) {
         console.log(err);
         res.status(500).send('F-Error');
       }
-      res.redirect('/' + code);
+      res.redirect('/');
   });
 });
 
