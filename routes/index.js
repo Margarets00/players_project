@@ -1,7 +1,11 @@
-var express = require('express');
-var fs = require('fs');
-const { render } = require('../app');
-var router = express.Router();
+var express       = require('express');
+var fs            = require('fs');
+var router        = express.Router();
+
+const { render }  = require('../server');
+const multer      = require('multer');
+const upload      = multer();
+
 
 var main_title = 'Playus';
 
@@ -15,6 +19,7 @@ function makeCode() {
   return code;
 }
 
+
 router.post('/make', function(req, res, next) {
   var code = makeCode();
   fs.writeFile('./data/' + code,' ', function(err) {
@@ -22,11 +27,12 @@ router.post('/make', function(req, res, next) {
         console.log(err);
         res.status(500).send('F-Error');
       }
-      res.redirect('/');
+      res.send({isCode : true, code: code});
   });
 });
-
+/*
 router.get(['/', '/:id'], function(req, res) {
+  res.send({'message' : 'respond with a resource'});
   const id = req.params.id;
   fs.readdir('./data', function(err, files) {
     if (err) {
@@ -60,6 +66,5 @@ router.get('/search/:id', function(req, res) {
     }
   });
 });
-
-
+*/
 module.exports = router;

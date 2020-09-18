@@ -1,13 +1,13 @@
 var createError   = require('http-errors');
 var express       = require('express');
 var path          = require('path');
-var cookieParser  = require('cookie-parser');
 var logger        = require('morgan');
+var mysql         = require('mysql');
 var indexRouter   = require('./routes/index');
 var playRouter    = require('./routes/playList');
-var mysql         = require('mysql');
 var dbconfig      = require('./config/database');
 var connection    = mysql.createConnection(dbconfig);
+var cors          = require('cors');
 
 var app           = express();
 
@@ -16,14 +16,15 @@ connection.connect();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.engine('html', require('ejs').renderFile);
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
 
-app.use('/', indexRouter);
+app.use('/main', indexRouter);
 app.use('/playList', playRouter);
 
 // catch 404 and forward to error handler
