@@ -3,8 +3,6 @@ var fs            = require('fs');
 var router        = express.Router();
 
 const { render }  = require('../server');
-const multer      = require('multer');
-const upload      = multer();
 
 
 var main_title = 'Playus';
