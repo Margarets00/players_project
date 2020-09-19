@@ -25,7 +25,7 @@ router.post('/make', function(req, res, next) {
         console.log(err);
         res.status(500).send('F-Error');
       }
-      res.send({isCode : true, code: code});
+      res.send({isCode : true, code: code, name: "anyone"});
   });
 });
 /*

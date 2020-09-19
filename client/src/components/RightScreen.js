@@ -2,13 +2,10 @@ import React, {Component, useEffect} from 'react';
 import record from '../img/recordboard.png';
 import {Animated} from "react-animated-css";
 import arrow from '../img/arrow.png';
-import arrow_h from '../img/arrow_hover.png';
 
 import '../App.css';
 
-//import 'animate.css/animate.css'
 import { Link } from 'react-router-dom';
-import { render } from '@testing-library/react';
 
 const axios = require('axios');
 
@@ -32,15 +29,17 @@ class RightScreen extends Component {
 
   P1_re(){
     return(
-      <div className="record">
-        <Animated animationIn="bounceInDown" animationOut="fadeOut" > 
-          <img src={record} className="recordSpin"/>
-        </Animated>
-        <div className="startBtn">
-         <p><button type = "submit" onClick={this.submitClick} className="startBtn2">CLICK</button> TO START</p>
-        </div>
-      </div>
-  );
+          <div>
+            <button type = "submit" onClick={this.submitClick} className="record">
+              <Animated animationIn="bounceInDown" animationOut="fadeOut" > 
+                <img src={record} className="recordSpin"/>
+              </Animated>
+            </button>
+            <button type = "submit" onClick={this.submitClick} className="startBtn">
+              <p><span className="startBtn2">CLICK</span> TO START</p>
+            </button>
+          </div>
+    );
   }
 
   P1_code(){
@@ -48,12 +47,12 @@ class RightScreen extends Component {
       <div className="page2">
         <p className="hh1">YOUR PARTY CODE IS</p>
         <p className="code">{this.state.code}</p>
-        <Link to="/page2/123 456/page3">
+        <Link to={"/playList/"+this.state.code}>
           <p className="enter">ENTER</p>
-          <img src={arrow} onMouseOver={this.arrow_h} className="arrow"/>
+          <img src={arrow} className="arrow"/>
         </Link>
       </div>
-  );
+    );
   }
 
   Change(){
